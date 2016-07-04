@@ -56,10 +56,8 @@ def sumaBinaria(sumando1, sumando2):
     long = len(sumando1)
     pos = len(sumando1)-1
     acarreo = 0
-    res = np.zeros(len(sumando1))
-    """
+    res = np.zeros(len(sumando1), dtype='int')
 
-    """
     for i in range(0,long):
         if sumando1[pos]==1 and sumando2[pos]==1 and not acarreo:
             res[pos]=0
@@ -92,7 +90,7 @@ def sumaBinaria(sumando1, sumando2):
             acarreo = 0
 
         else:
-            print "Eroor"
+            print "Error"
             print sumando1[pos]
             print sumando2[pos]
             print acarreo
@@ -104,9 +102,9 @@ def complemento(numero):
     leng = len(numero)
     for i in range(leng):
         if numero[i]==0:
-            numero[i]=1
+            numero[i]= 1
         else:
-            numero[i]=0
+            numero[i]= 0
 
     uno = np.zeros(len(numero),dtype='int')
     uno[-1]=1
@@ -137,18 +135,15 @@ def algoritmo_boot(mult1, mult2):
                 cont = cont+1
 
     print "Matriz Inicial: \n",matriz
-    #for i in range(columnas):
 
-    print mult1
     for i in range(len(mult1)):
         if str(matriz[2][columnas-2])+str(matriz[2][columnas-1])=="10":
             suma = sumaBinaria(matriz[2],matriz[1])
             matriz[2] = suma
-            #print matriz
             auxj=columnas-1
             for j in range(columnas):
                 matriz[2][auxj]=matriz[2][auxj-1]
-                auxj = auxj-1
+                auxj -= 1
 
             print "Iteración: %d" %(i+1)
             print matriz
@@ -157,7 +152,7 @@ def algoritmo_boot(mult1, mult2):
             auxj = columnas - 1
             for j in range(columnas):
                 matriz[2][auxj] = matriz[2][auxj - 1]
-                auxj = auxj - 1
+                auxj -= 1
 
             print "Iteración: %d" %(i+1)
             print matriz
@@ -165,11 +160,10 @@ def algoritmo_boot(mult1, mult2):
         elif str(matriz[2][columnas - 2]) + str(matriz[2][columnas - 1]) == "01":
             suma = sumaBinaria(matriz[2], matriz[0])
             matriz[2] = suma
-            # print matriz
             auxj = columnas - 1
             for j in range(columnas):
                 matriz[2][auxj] = matriz[2][auxj - 1]
-                auxj = auxj - 1
+                auxj -= 1
 
             print "Iteración: %d" %(i+1)
             print matriz
